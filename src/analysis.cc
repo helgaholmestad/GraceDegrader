@@ -38,7 +38,7 @@ void analysis::writePerEvent(const G4Event* event){
       if((*hc)[itr]->GetParticleName()!="anti_proton")
 	{continue;
 	}
-      outfile<<(*hc)[itr]->GetMyParticleEnergy()/keV<<"  "<<(*hc)[itr]->GetHitPosition().x()/cm<<"  "<<(*hc)[itr]->GetHitPosition().y()/cm<<"  "<<(*hc)[itr]->GetHitPosition().z()/cm<<"  "<<(*hc)[itr]->GetMyMomentumDirection().x()<<"  "<<(*hc)[itr]->GetMyMomentumDirection().y()<<"  "<<(*hc)[itr]->GetMyMomentumDirection().z()<<"\n";
+      outfile<<(*hc)[itr]->GetMyParticleEnergy()/keV<<"  "<<(*hc)[itr]->GetHitPosition().x()/cm<<"  "<<(*hc)[itr]->GetHitPosition().y()/cm<<"  "<<(*hc)[itr]->GetHitPosition().z()/cm<<"  "<<(*hc)[itr]->GetMyMomentumDirection().x()<<"  "<<(*hc)[itr]->GetMyMomentumDirection().y()<<"  "<<(*hc)[itr]->GetMyMomentumDirection().z()<<"  "<<event->GetEventID()<<"\n";
     }
   }
 }  
