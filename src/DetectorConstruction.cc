@@ -97,7 +97,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   DefineMaterials();
 
   //Defining the world. Make it a small size such that particles are not tracked loonger than necassary
-  G4double WorldSize=10.0*cm;
+  G4double WorldSize=18.0*cm;
   G4Box* solidWorld = new G4Box("World",				//its name
 			 WorldSize/2.0,WorldSize/2.0,WorldSize/2.0);	//its size, divide by two to get the right size
   
@@ -171,13 +171,13 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   
   
-  G4Tubs* solidSilicon = new G4Tubs("Silicon",0,2.0*cm,25.0/2*um,0,2*M_PI);
+  G4Tubs* solidSilicon = new G4Tubs("Silicon",0,2.0*cm,3*cm,0,2*M_PI);
   G4LogicalVolume* logicSilicon = new G4LogicalVolume(solidSilicon,    //its solid
   						      vac, //its material
   						      "siliconDetector"); //name
 
   G4PVPlacement* physiSilicon1 = new G4PVPlacement(RotChamber,		   //no rotation
-  						   G4ThreeVector(3.0*cm,0,0.0*cm),//*cm*std::ta
+  						   G4ThreeVector(6.0*cm,0,0.0*cm),//*cm*std::ta
 						   //(9*M_PI/2)+10*cm),  its position
 						   //G4ThreeVector(-1.5*cm,0,0.0*cm),//*cm*std::tan(9*M_PI/2)+10*cm),  //its position
   						   logicSilicon,   //  its logical volume		    
