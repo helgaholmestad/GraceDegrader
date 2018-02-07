@@ -1,0 +1,1 @@
+cmake -DGeant4_DIR=/home/helga/InstallGeant4/install-Geant/lib64/Geant4-10.1.1 ../ToFindDegrader/
