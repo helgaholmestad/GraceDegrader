@@ -32,13 +32,15 @@ void analysis::writePerEvent(const G4Event* event){
   G4int nEntries = hc->entries();  
   for(G4int itr  = 0 ; itr < nEntries ; itr++) {
     if((*hc)[itr]->GetParticleName()=="anti_proton"){
+      G4cout<<"HER"<<event->GetEventID()<<G4endl;
       if((*hc)[itr]->GetMyParticleEnergy()/keV>10.0){
 	continue;
       }
-      if(((*hc)[itr]->GetParticleName()!="anti_proton")||((*hc)[itr]->GetHitPosition().x()>3.0))
-      {continue;
-      }
-      
+      if(((*hc)[itr]->GetParticleName()!="anti_proton")||((*hc)[itr]->GetHitPosition().x()/cm>3.0))
+	{
+	  continue;
+	}
+      G4cout<<"hva er hit position   "<<(*hc)[itr]->GetHitPosition().x()<<endl;
       outfile<<(*hc)[itr]->GetMyParticleEnergy()/keV<<"  "<<(*hc)[itr]->GetHitPosition().x()/cm<<"  "<<(*hc)[itr]->GetHitPosition().y()/cm<<"  "<<(*hc)[itr]->GetHitPosition().z()/cm<<"  "<<(*hc)[itr]->GetMyMomentumDirection().x()<<"  "<<(*hc)[itr]->GetMyMomentumDirection().y()<<"  "<<(*hc)[itr]->GetMyMomentumDirection().z()<<"  "<<event->GetEventID()<<"\n";
     }
   }
