@@ -20,7 +20,6 @@ void analysis::makeFile(){
 }
 
 void analysis::writePerEvent(const G4Event* event){
-  G4cout<<"event ID"<<event->GetEventID()<<G4endl;
   //outfile<<"new"<<"\n";
   G4SDManager* SDman = G4SDManager::GetSDMpointer();
   G4int AntiPCollectionID = SDman->GetCollectionID("AntiPCollection");
@@ -32,7 +31,6 @@ void analysis::writePerEvent(const G4Event* event){
   G4int nEntries = hc->entries();  
   for(G4int itr  = 0 ; itr < nEntries ; itr++) {
     if((*hc)[itr]->GetParticleName()=="anti_proton"){
-      G4cout<<"HER"<<event->GetEventID()<<G4endl;
       if((*hc)[itr]->GetMyParticleEnergy()/keV>10.0){
 	continue;
       }
@@ -40,7 +38,6 @@ void analysis::writePerEvent(const G4Event* event){
 	{
 	  continue;
 	}
-      G4cout<<"hva er hit position   "<<(*hc)[itr]->GetHitPosition().x()<<endl;
       outfile<<(*hc)[itr]->GetMyParticleEnergy()/keV<<"  "<<(*hc)[itr]->GetHitPosition().x()/cm<<"  "<<(*hc)[itr]->GetHitPosition().y()/cm<<"  "<<(*hc)[itr]->GetHitPosition().z()/cm<<"  "<<(*hc)[itr]->GetMyMomentumDirection().x()<<"  "<<(*hc)[itr]->GetMyMomentumDirection().y()<<"  "<<(*hc)[itr]->GetMyMomentumDirection().z()<<"  "<<event->GetEventID()<<"\n";
     }
   }
