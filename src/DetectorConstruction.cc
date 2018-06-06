@@ -160,7 +160,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   				    "ChamberFoil"); //name 
   
   G4PVPlacement* physiChamberFoil = new G4PVPlacement(0,		   //no rotation
-						      G4ThreeVector(3*cm-50.0/2*um,0.0,0.0),  //its position
+						      G4ThreeVector(3*cm,0.0,0.0),  //its position
   				  logicChamberFoil,     //its logical volume		    
   				  "ChamberFoil", //its name
   				  logicWorld,        //its mother
@@ -171,13 +171,14 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   
   
-  G4Tubs* solidSilicon = new G4Tubs("Silicon",0,2.0*cm,3*cm,0,2*M_PI);
+  G4Tubs* solidSilicon = new G4Tubs("Silicon",0,2.0*cm,0.5*cm,0,2*M_PI);
   G4LogicalVolume* logicSilicon = new G4LogicalVolume(solidSilicon,    //its solid
   						      vac, //its material
   						      "siliconDetector"); //name
 
   G4PVPlacement* physiSilicon1 = new G4PVPlacement(RotChamber,		   //no rotation
-  						   G4ThreeVector(6.0*cm,0,0.0*cm),//*cm*std::ta
+						   //To the position it is added a distance of 25um for the volumes not to overlap.
+  						   G4ThreeVector(3.5*cm+25*um,0,0.0*cm),//*cm*std::ta
 						   //(9*M_PI/2)+10*cm),  its position
 						   //G4ThreeVector(-1.5*cm,0,0.0*cm),//*cm*std::tan(9*M_PI/2)+10*cm),  //its position
   						   logicSilicon,   //  its logical volume		    
@@ -186,9 +187,6 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   						   true,            // no boulean operat
   						   7);              //  copy number
 
-
-
-  G4cout<<"kommer vi hit"<<G4endl;
   
   //Here we make the detector sensitive such that the hits are recorded in this detector
     G4VSensitiveDetector* detector = new AntiPSD("Silicon");

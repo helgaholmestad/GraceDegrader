@@ -31,10 +31,11 @@ void analysis::writePerEvent(const G4Event* event){
   G4int nEntries = hc->entries();  
   for(G4int itr  = 0 ; itr < nEntries ; itr++) {
     if((*hc)[itr]->GetParticleName()=="anti_proton"){
-      if((*hc)[itr]->GetMyParticleEnergy()/keV>10.0){
-	continue;
-      }
-      if(((*hc)[itr]->GetParticleName()!="anti_proton")||((*hc)[itr]->GetHitPosition().x()/cm>3.0))
+      //      if((*hc)[itr]->GetMyParticleEnergy()/keV>10.0){
+      //	continue;
+      //}
+      //G4cout<<((*hc)[itr]->GetHitPosition().x()/cm)<<G4endl;
+      if(((*hc)[itr]->GetParticleName()!="anti_proton")||((*hc)[itr]->GetHitPosition().x()/cm>3.0025))
 	{
 	  continue;
 	}
