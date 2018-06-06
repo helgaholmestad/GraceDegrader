@@ -28,7 +28,7 @@ set(CMAKE_MODULE_PATH /home/helga/installGeant/geant4.10.03.p03/cmake/Modulus)
 # Setup include directory for this project
 #
 
-message("skal være her ")
+#message("skal være her ")
 #message(${ROOT_INCLUDE_DIR})
 #if(ROOT_FOUND)
 #message("er vi her ")
