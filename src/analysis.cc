@@ -34,8 +34,8 @@ void analysis::writePerEvent(const G4Event* event){
       //      if((*hc)[itr]->GetMyParticleEnergy()/keV>10.0){
       //	continue;
       //}
-      //G4cout<<((*hc)[itr]->GetHitPosition().x()/cm)<<G4endl;
-      if(((*hc)[itr]->GetParticleName()!="anti_proton")||((*hc)[itr]->GetHitPosition().x()/cm>3.0025))
+      // G4cout<<event->GetEventID()<<G4endl;
+      if(((*hc)[itr]->GetParticleName()!="anti_proton")||((*hc)[itr]->GetHitPosition().x()/cm>3.00))
 	{
 	  continue;
 	}
